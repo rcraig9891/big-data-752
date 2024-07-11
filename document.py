@@ -1,8 +1,5 @@
-import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
-
-token_frequency = []
 
 
 class Document:
@@ -10,7 +7,8 @@ class Document:
         self.doc_id = doc_id
         self.content = content
         self.tokens = self.parse_words()
-        self.tfidf_list = []
+        self.tf_list = {}
+        self.tfidf_list = {}
 
     def parse_words(self):
         processed_words = []
@@ -35,8 +33,10 @@ class Document:
         length = len(self.tokens)
         for key in term_dict:
             term_dict[key] = round(term_dict[key]/length, 2)
-        return term_dict
+            self.tf_list = term_dict
 
-    def calculate_tfidf(self):
-        pass
+    def calculate_tfidf(self, idf_list):
+        for key in self.tf_list:
+            value = self.tf_list[key] * idf_list[key]
+            self.tfidf_list[key] = value
 

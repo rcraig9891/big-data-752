@@ -3,7 +3,7 @@ d1 = ("The coronavirus, specifically SARS-CoV-2, is a novel virus that emerged i
       " and has caused widespread illness, characterized by symptoms ranging from mild respiratory"
       " issues to severe pneumonia. The pandemic prompted unprecedented public health measures,"
       " including lockdowns, social distancing, and mask-wearing, while accelerating the development"
-      " of vaccines and treatments. The virus's rapid spread and significant impact on healthcare"
+      " of vaccines and treatments. The virus rapid spread and significant impact on healthcare"
       " systems, economies, and daily life highlighted the importance of global cooperation"
       " and resilience in facing public health crises.")
 
