@@ -1,4 +1,7 @@
+import nltk
+from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
+
 token_frequency = []
 
 
@@ -10,18 +13,29 @@ class Document:
         self.tfidf_list = []
 
     def parse_words(self):
-        tokens = []
+        processed_words = []
         words = word_tokenize(self.content)
-        for word in words:
-            if word != ',' and word != '.':
-                tokens.append(word)
-        return tokens
+        stop_words = set(stopwords.words('english'))
+        tokens = [word for word in words if word.lower() not in stop_words]
+        for token in tokens:
+            if token != ',' and token != '.':
+                processed_words.append(token)
+        return processed_words
 
-    def calculate_tf(self):
-        pass
+    def term_frequency(self):
+        dictionary = {}
+        for token in self.tokens:
+            if token in dictionary:
+                dictionary[token] += 1
+            else:
+                dictionary[token] = 1
+        return dictionary
 
-    def calculate_idf(self):
-        pass
+    def calculate_tf(self, term_dict):
+        length = len(self.tokens)
+        for key in term_dict:
+            term_dict[key] = round(term_dict[key]/length, 2)
+        return term_dict
 
     def calculate_tfidf(self):
         pass
