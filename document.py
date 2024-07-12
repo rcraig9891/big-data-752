@@ -36,8 +36,12 @@ class Document:
             self.tf_list = term_dict
 
     def calculate_tfidf(self, idf_list):
+        dictionary = {}
         for key in self.tf_list:
             value = self.tf_list[key] * idf_list[key]
-            if value != 0.0:
-                self.tfidf_list[key] = round(value, 2)
+            dictionary[key] = round(value, 2)
+        self.tfidf_list = {key: value for key, value in dictionary.items() if value != 0.0}
+        print(self.tfidf_list)
+
+
 
