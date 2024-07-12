@@ -26,6 +26,7 @@ def main():
 
 def calculate_idf(doc_list):
     for document in doc_list:
+        # Place in a set to remove any duplicate terms.
         token_set = set(document.tokens)
         for token in token_set:
             if token in idf_scores:

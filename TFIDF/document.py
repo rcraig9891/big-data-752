@@ -42,7 +42,7 @@ class Document:
             dictionary[key] = round(value, 2)
         # Remove any terms where value equals 0.0.
         self.tfidf_list = {key: value for key, value in dictionary.items() if value != 0.0}
-        print(self.tfidf_list)
+
 
 
 
