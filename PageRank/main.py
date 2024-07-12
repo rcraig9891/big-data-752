@@ -1,5 +1,12 @@
 import numpy as np
 import matrix_version as mv
+from neo4j import GraphDatabase
+
+uri = "bolt://localhost:7687"  # neo4j database connection
+username = "neo4j"
+password = "password"
+driver = GraphDatabase.driver(uri, auth=(username, password))
+
 tr_matrix = np.array([
     [0,     0,  0, (1/3),  1],    # A
     [1,     0,  1,     0,  0],    # B
@@ -14,10 +21,10 @@ damp_factor = 0
 def main():
     pr = mv.page_rank(tr_matrix, u_size, damp_factor)
     pages = ['A', 'B', 'C', 'D', 'E']
-
     for (page, value) in zip(pages, pr):
         print(f'Page {page}: {value}')
 
 
 if __name__ == "__main__":
     main()
+
