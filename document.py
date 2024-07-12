@@ -38,5 +38,6 @@ class Document:
     def calculate_tfidf(self, idf_list):
         for key in self.tf_list:
             value = self.tf_list[key] * idf_list[key]
-            self.tfidf_list[key] = value
+            if value != 0.0:
+                self.tfidf_list[key] = round(value, 2)
 

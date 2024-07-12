@@ -1,6 +1,7 @@
 import gpt_response as gpt
 import document as doc
 import math
+similar_documents = []
 idf_scores = {}
 
 
