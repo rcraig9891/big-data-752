@@ -20,8 +20,7 @@ def main():
     for (page, value) in zip(pages, pr):
         print(f'Page {page}: {value}')
     url_list = fetch_nodes()
-    print(url_list)
-    establish_links()
+    establish_links(url_list)
     close_driver()
 
 
@@ -31,10 +30,13 @@ def fetch_nodes():
         return nodes
 
 
-def establish_links():
+def establish_links(urls):
+    map_hyperlinks = {}
     with driver.session() as session:
-        map_input = session.execute_read(qu.get_linked_nodes, 'youtube.com')
-        print(map_input)
+        for url in urls:
+            hyper_links = session.execute_read(qu.get_linked_nodes, url)
+            map_hyperlinks[url] = hyper_links
+    return map_hyperlinks
 
 
 if __name__ == "__main__":
