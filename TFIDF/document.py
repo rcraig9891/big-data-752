@@ -40,6 +40,7 @@ class Document:
         for key in self.tf_list:
             value = self.tf_list[key] * idf_list[key]
             dictionary[key] = round(value, 2)
+        # Remove any terms where value equals 0.0.
         self.tfidf_list = {key: value for key, value in dictionary.items() if value != 0.0}
         print(self.tfidf_list)
 
