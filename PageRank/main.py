@@ -1,7 +1,7 @@
 import numpy as np
 import matrix_version as mv
+import queries as qu
 from graph_db import driver, close_driver
-import queries
 
 tr_matrix = np.array([
     [0,     0,  0, (1/3),  1],    # A
@@ -20,12 +20,13 @@ def main():
     for (page, value) in zip(pages, pr):
         print(f'Page {page}: {value}')
     url_list = fetch_nodes()
+    print(url_list)
     close_driver()
 
 
 def fetch_nodes():
     with driver.session() as session:
-        nodes = session.read_transaction(queries.get_nodes)
+        nodes = session.execute_read(qu.get_nodes)
         return nodes
 
 
