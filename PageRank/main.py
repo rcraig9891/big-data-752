@@ -3,7 +3,6 @@ import page_rank as pr
 import queries as qu
 from neo4j import GraphDatabase
 
-driver = GraphDatabase.driver("bolt://localhost:7687", auth=("neo4j", "password"))
 tr_matrix = np.array([
     [0,     0,  0, (1/3),  1],    # A
     [1,     0,  1,     0,  0],    # B
@@ -13,6 +12,7 @@ tr_matrix = np.array([
 ])
 u_size = tr_matrix.shape[0]
 damp_factor = 0
+driver = GraphDatabase.driver("bolt://localhost:7687", auth=("neo4j", "password"))
 
 
 def main():
@@ -40,6 +40,7 @@ def establish_links(urls):
         for url in urls:
             hyper_links = session.execute_read(qu.get_linked_nodes, url)
             map_hyperlinks[url, 1/len(urls)] = hyper_links
+    print(map_hyperlinks)
     return map_hyperlinks
 
 
