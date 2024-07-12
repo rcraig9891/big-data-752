@@ -26,7 +26,7 @@ Calculate the page ranks of a matrix representation using numPy library. Columns
 # Step Two (mapReduce_verion.py)
 Implement a mapReduce version of the pageRank algorithm using an actual Neo4J database. MapReduce is a programming model and framework for processing and generating large data sets with a parallel, distributed algorithm on a cluster. It was popularized by Google and is used extensively for distributed computing tasks. 
 
-This shows the algorithm for the mapReduce, the actual version could be implemented using HADOOP or Apache Spark. For the database I will be using a neo4J desktop database using the neo4j library. The database will have nodes representing webpages and edges representing links to other pages.
+This shows the algorithm for the mapReduce, the actual version could be implemented using HADOOP or Apache Spark. For the database I will be using a neo4J desktop database using the neo4j library. The database will have nodes representing webpages and edges representing links to other pages. Neo4J database snapshot in package.
 
 
 
