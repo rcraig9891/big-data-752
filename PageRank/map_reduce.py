@@ -1,11 +1,10 @@
 def map_function(graph):
-    map_output = []
-    print(graph)
+    node_links = []
+    node_scores = {}
     for key in graph:
-        map_output.append((key[0], graph[key]))
-        link_list = graph[key]
-        for link in link_list:
-            pass
+        node_links.append((key[0], graph[key]))
+        node_scores[key[0]] = key[1]
+    print(node_links)
 
 
 def reduce_function(map_output):
