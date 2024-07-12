@@ -1,7 +1,6 @@
 import gpt_response as gpt
 import document as doc
 import math
-similar_documents = []
 idf_scores = {}
 
 
@@ -22,6 +21,9 @@ def main():
         term_frequency = document.term_frequency()
         document.calculate_tf(term_frequency)
         document.calculate_tfidf(idf_scores)
+    print(doc1.tfidf_list)
+    print(doc2.tfidf_list)
+    print(compute_similarity(documents))
 
 
 def calculate_idf(doc_list):
@@ -35,6 +37,19 @@ def calculate_idf(doc_list):
                 idf_scores[token] = 1
     for term in idf_scores:
         idf_scores[term] = round(math.log2(len(doc_list)/idf_scores[term]), 2)
+
+
+def compute_similarity(documents):
+    similar_measurements = {}
+    score = 0
+    for doc1 in documents:
+        for doc2 in documents:
+            if doc1.doc_id < doc2.doc_id:
+                for key in doc1.tfidf_list.keys() & doc2.tfidf_list.keys():
+                    score += doc1.tfidf_list[key] * doc2.tfidf_list[key]
+                similar_measurements[doc1.doc_id, doc2.doc_id] = round(score, 4)
+                score = 0
+    return similar_measurements
 
 
 if __name__ == "__main__":
