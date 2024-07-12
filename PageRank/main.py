@@ -1,8 +1,10 @@
 import numpy as np
 import matrix_version as mv
+import map_reduce as mr
 import queries as qu
-from graph_db import driver, close_driver
+from neo4j import GraphDatabase
 
+driver = GraphDatabase.driver("bolt://localhost:7687", auth=("neo4j", "password"))
 tr_matrix = np.array([
     [0,     0,  0, (1/3),  1],    # A
     [1,     0,  1,     0,  0],    # B
@@ -15,13 +17,16 @@ damp_factor = 0
 
 
 def main():
+    # Matrix Version
     pr = mv.page_rank(tr_matrix, u_size, damp_factor)
     pages = ['A', 'B', 'C', 'D', 'E']
     for (page, value) in zip(pages, pr):
         print(f'Page {page}: {value}')
+    # Map_Reduce Version
     url_list = fetch_nodes()
-    establish_links(url_list)
-    close_driver()
+    map_input = establish_links(url_list)
+    driver.close()
+    map_reduce(map_input)
 
 
 def fetch_nodes():
@@ -35,8 +40,14 @@ def establish_links(urls):
     with driver.session() as session:
         for url in urls:
             hyper_links = session.execute_read(qu.get_linked_nodes, url)
-            map_hyperlinks[url] = hyper_links
+            map_hyperlinks[url, 1/len(urls)] = hyper_links
     return map_hyperlinks
+
+
+def map_reduce(map_input):
+    # Process multiple times to reach convergence
+    map_output = mr.map_function(map_input)
+    reduce_output = mr.reduce_function(map_output)
 
 
 if __name__ == "__main__":
