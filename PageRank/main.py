@@ -22,7 +22,6 @@ def main():
         print(f'Page {page}: {value}')
     fetch_nodes()
     close_driver()
-    print(nodes)
 
 
 def fetch_nodes():
