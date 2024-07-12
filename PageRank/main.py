@@ -3,7 +3,6 @@ import matrix_version as mv
 from graph_db import driver, close_driver
 import queries
 
-nodes = []
 tr_matrix = np.array([
     [0,     0,  0, (1/3),  1],    # A
     [1,     0,  1,     0,  0],    # B
@@ -20,15 +19,14 @@ def main():
     pages = ['A', 'B', 'C', 'D', 'E']
     for (page, value) in zip(pages, pr):
         print(f'Page {page}: {value}')
-    fetch_nodes()
+    url_list = fetch_nodes()
     close_driver()
 
 
 def fetch_nodes():
     with driver.session() as session:
-        node_names = session.read_transaction(queries.get_nodes)
-        for name in node_names:
-            nodes.append(name)
+        nodes = session.read_transaction(queries.get_nodes)
+        return nodes
 
 
 if __name__ == "__main__":
