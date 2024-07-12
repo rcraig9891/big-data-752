@@ -21,6 +21,7 @@ def main():
         print(f'Page {page}: {value}')
     url_list = fetch_nodes()
     print(url_list)
+    establish_links()
     close_driver()
 
 
@@ -28,6 +29,12 @@ def fetch_nodes():
     with driver.session() as session:
         nodes = session.execute_read(qu.get_nodes)
         return nodes
+
+
+def establish_links():
+    with driver.session() as session:
+        map_input = session.execute_read(qu.get_linked_nodes, 'youtube.com')
+        print(map_input)
 
 
 if __name__ == "__main__":
