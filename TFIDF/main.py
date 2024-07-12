@@ -21,8 +21,6 @@ def main():
         term_frequency = document.term_frequency()
         document.calculate_tf(term_frequency)
         document.calculate_tfidf(idf_scores)
-    print(doc1.tfidf_list)
-    print(doc2.tfidf_list)
     print(compute_similarity(documents))
 
 
