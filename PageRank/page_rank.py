@@ -10,3 +10,11 @@ def page_rank(matrix, start_factor, d_factor, convergence=1e-6):
         if np.sum(abs(pr_vector - old_vector)) < convergence:
             break
     return pr_vector
+
+
+def map_reduce(map_input):
+    node_links = []
+    node_scores = {}
+    # Process multiple times to reach convergence
+    for _ in range(100):
+        pass
