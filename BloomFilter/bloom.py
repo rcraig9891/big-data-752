@@ -9,14 +9,16 @@ class Bloom:
         self.size = size
         self.bit_arr = bitarray(size)
 
-    def add_element(self, elements: List[str]) -> None:
+    def add_elements(self, elements: List[str]) -> None:
         for element in elements:
             for i in range(self.hash_count):
-                pass
+                index = self.hash_function(element, i)
+                print(index)
+                self.bit_arr[index] = 1
 
     def lookup_element(self, element: str) -> bool:
         pass
 
-    def hash_function(self, element: str, index: int) -> int:
-        hash_digest = mmh3.hash(element, index)
-        return (hash_digest % self.size) + 1
+    def hash_function(self, element: str, seed: int) -> int:
+        hash_value = mmh3.hash(element, seed)
+        return hash_value % self.size
