@@ -16,3 +16,7 @@ class Bloom:
 
     def lookup_element(self, element: str) -> bool:
         pass
+
+    def hash_function(self, element: str, index: int) -> int:
+        hash_digest = mmh3.hash(element, index)
+        return (hash_digest % self.size) + 1

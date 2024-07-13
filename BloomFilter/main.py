@@ -33,7 +33,7 @@ valid_emails = [
 
 def main():
     bloom_filter = Bloom(10000, 3)
-    bloom_filter.add_element(valid_emails)
+    print(bloom_filter.hash_function("richard.craig@example.com", 3))
 
 
 if __name__ == "__main__":
