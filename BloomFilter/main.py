@@ -32,7 +32,8 @@ valid_emails = [
 
 
 def main():
-    bloom_filter = Bloom(1000, 3)
+    bloom_filter = Bloom(10000, 3)
+    bloom_filter.add_element(valid_emails)
 
 
 if __name__ == "__main__":
