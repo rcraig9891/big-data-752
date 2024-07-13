@@ -15,21 +15,15 @@ def page_rank(matrix, start_factor):
     return pr_vector
 
 
-def map_reduce(graph_result):
-    node_links = {}
-    node_scores = {}
-    previous_pr = np.ones(len(graph_result))/len(graph_result)
-    # Process multiple times to reach convergence
-    for key, value in graph_result.items():
-        webpage = key[0]
-        pr_score = key[1]
-        node_links[webpage] = graph_result[key]
+def map_reduce(hyper_links):
+    page_ranks = np.ones(len(hyper_links))/len(hyper_links)
+    node_scores = {key: rank for key, rank in zip(hyper_links, page_ranks)}
+    # Map Portion
+    new_scores = {}
+    for key, value in hyper_links.items():
         for link in value:
-            if link in node_scores:
-                node_scores[link] += round((d_factor * pr_score + 1 - d_factor)/len(value), 1)
+            if link in new_scores:
+                new_scores[link] += (d_factor * node_scores[key] + 1 - d_factor) / len(value)
             else:
-                node_scores[link] = pr_score/len(value)
-
-
-
+                new_scores[link] = node_scores[key] / len(value)
 

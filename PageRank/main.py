@@ -26,6 +26,7 @@ def main():
     url_list = fetch_nodes()
     map_input = establish_links(url_list)
     driver.close()
+    print("Map_Reduce Version")
     pr.map_reduce(map_input)
 
 
@@ -40,7 +41,7 @@ def establish_links(urls):
     with driver.session() as session:
         for url in urls:
             hyper_links = session.execute_read(qu.get_linked_nodes, url)
-            map_hyperlinks[url, 1/len(urls)] = hyper_links
+            map_hyperlinks[url] = hyper_links
     return map_hyperlinks
 
 
