@@ -17,8 +17,9 @@ driver = GraphDatabase.driver("bolt://localhost:7687", auth=("neo4j", "password"
 
 def main():
     # Matrix Version
-    ranks = pr.page_rank(tr_matrix, u_size, damp_factor)
+    ranks = pr.page_rank(tr_matrix, u_size)
     pages = ['A', 'B', 'C', 'D', 'E']
+    print("Matrix Version")
     for (page, value) in zip(pages, ranks):
         print(f'Page {page}: {value}')
     # Map_Reduce Version
@@ -40,7 +41,6 @@ def establish_links(urls):
         for url in urls:
             hyper_links = session.execute_read(qu.get_linked_nodes, url)
             map_hyperlinks[url, 1/len(urls)] = hyper_links
-    print(map_hyperlinks)
     return map_hyperlinks
 
 
