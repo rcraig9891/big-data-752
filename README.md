@@ -20,11 +20,21 @@ Example of dot product is term1 in doc 1 x term1 in doc2 + term2 in doc1 x term2
 # Challenge Two: PageRank Algorithms (Package: PageRank)
 PageRank forms the basis of Google's original search algorithm, influencing the ranking of search results based on the importance of pages. PageRank assigns a numerical weight or importance to each page on the web based on the number and quality of links pointing to it. PageRank assigns each page a score, which represents the probability that a user randomly clicking links will arrive at that page. The score is calculated iteratively and converges to a stable value over time. 
 
-# Step One Matrix Version
+# Step One: Matrix Version
 Calculate the page ranks of a matrix representation using numPy library. Columns represent a starting point for the surfer while rows represent the probability of an end point relative to the column.
 
-# Step Two Graph Version
+# Step Two: Graph Version
 This time we will implement the pageRank algorithm on an actual graph database. The graph is displayed in the image neo4j_db.png file. We will apply Cypher queries to retireve the information needed then apply a sudo map_reduce function to determine the page ranks for the nodes in the graph.
+
+# Challenge Three: Implement the Bloom Filter
+A Bloom filter is a probabilistic data structure designed to efficiently test whether an element is a member of a set. It can quickly determine membership with a possibility of false positives but guarantees no false negatives. Uses a bit array and multiple hash functions to store information about the presence of elements. Query and insertion operations are in constant time making them an efficent filter.
+
+# Applications
+  Avoid unnecessary disk lookup in databases. Bloom Filter is used to filter lookups that do not exist in the dataset.
+  Spam Detection. Bloom Filter can check if email exists in dataset to filter out malicious emails.
+
+# Step One: Create the Bloom Filter
+
 
 
 
