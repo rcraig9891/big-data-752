@@ -1,4 +1,6 @@
 from bloom import Bloom
+import tkinter as tk
+from tkinter import messagebox
 
 valid_emails = [
     "john.doe@example.com", "jane.smith@example.com", "michael.johnson@example.com", "sarah.williams@example.com",
@@ -31,9 +33,26 @@ valid_emails = [
 ]
 
 
+def submit_data():
+    email = entry.get()
+    filter_result = bloom_filter.lookup_element(email)
+    messagebox.showinfo("Result", f"Email Exists: {filter_result} ")
+
+
+bloom_filter = Bloom(1000, 3)
+bloom_filter.add_elements(valid_emails)
+root = tk.Tk()
+root.title("Bloom Filter Tester")
+label = tk.Label(root, text="Enter Email:")
+label.pack(pady=10)
+entry = tk.Entry(root, width=50)
+entry.pack(pady=10)
+submit_button = tk.Button(root, text="Submit", command=submit_data)
+submit_button.pack(pady=10)
+
+
 def main():
-    bloom_filter = Bloom(1000, 3)
-    bloom_filter.add_elements(valid_emails)
+    root.mainloop()
 
 
 if __name__ == "__main__":
