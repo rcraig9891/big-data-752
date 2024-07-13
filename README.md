@@ -1,5 +1,5 @@
 # big-data-752
-Extracircular challenges for COMPSCI 752. These are personal projects using the knowledge learnt from COMPSCI 752 (big data management).
+These are personal projects using the knowledge learnt from COMPSCI 752 (big data management).
 
 # Challenge One: Near Duplicate Detection (Package: TFIDF)
 10 Chat GPT bots were provided the exact same prompt by the user ("give me a short paragraph on the corona virus").Each response by the chat bots are treated as there own individual document. Responses provided in gpt.response.py file for testing purposes. You could call the OpenAi API, however to my knowledge this is not a free service.
@@ -29,10 +29,15 @@ This time we will implement the pageRank algorithm on an actual graph database. 
 # Challenge Three: Implement the Bloom Filter
 A Bloom filter is a probabilistic data structure designed to efficiently test whether an element is a member of a set. It can quickly determine membership with a possibility of false positives but guarantees no false negatives. Uses a bit array (efficent storage) and multiple hash functions to store information about the presence of elements. Query and insertion operations are in constant time making them an efficent filter.
 
+Hash functions use the input value and return an integer. That integer is used as the index in the bloom filter where that index is set to 1. This is done accross multiple hash functions. For an input to return a positive (might exist in set) all hash functions must return integers where the index in the bloom filter are set to 1. Multiple hash functions can reduce the probability of collisions (false positives).
+
 Avoid unnecessary disk lookup in databases. Bloom Filter is used to filter lookups that do not exist in the dataset. Bloom Filter can check if email exists in dataset to filter out malicious emails. 
 
 # Step One: Create the Bloom Filter
-Implement a spam filter for emails (valid emails are stored in a list). These emails will be processed through the bloom filter to set the indexes of the bit array.
+Implement a spam filter for emails (valid emails are stored in a list). These emails will be processed through the hash functions which will update the indexes in the bloom filter. mmh3 is a Python library that implements the MurmurHash3 algorithm and can be used to produce a hash value that can set the index. 
+
+# Step Two: Create a GUI to test the Bloom Filter
+Implement a GUI where the user can input an email address to check if it might be in the list. The GUI will return True if it might exist or False if it definitly does not (Bloom Filter never has false negatives).
 
 
 
