@@ -29,9 +29,7 @@ This time we will implement the pageRank algorithm on an actual graph database. 
 # Challenge Three: Implement the Bloom Filter
 A Bloom filter is a probabilistic data structure designed to efficiently test whether an element is a member of a set. It can quickly determine membership with a possibility of false positives but guarantees no false negatives. Uses a bit array and multiple hash functions to store information about the presence of elements. Query and insertion operations are in constant time making them an efficent filter.
 
-# Applications
-  Avoid unnecessary disk lookup in databases. Bloom Filter is used to filter lookups that do not exist in the dataset.
-  Spam Detection. Bloom Filter can check if email exists in dataset to filter out malicious emails.
+Avoid unnecessary disk lookup in databases. Bloom Filter is used to filter lookups that do not exist in the dataset. Bloom Filter can check if email exists in dataset to filter out malicious emails.
 
 # Step One: Create the Bloom Filter
 
