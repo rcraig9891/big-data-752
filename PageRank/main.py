@@ -30,7 +30,6 @@ def main():
     print(pr.map_reduce(map_input))
 
 
-
 def fetch_nodes():
     with driver.session() as session:
         nodes = session.execute_read(qu.get_nodes)
