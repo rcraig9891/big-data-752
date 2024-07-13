@@ -34,7 +34,7 @@ Hash functions use the input value and return an integer. That integer is used a
 Avoid unnecessary disk lookup in databases. Bloom Filter is used to filter lookups that do not exist in the dataset. Bloom Filter can check if email exists in dataset to filter out malicious emails. 
 
 # Step One: Create the Bloom Filter
-Implement a spam filter for emails (valid emails are stored in a list). These emails will be processed through the hash functions which will update the indexes in the bloom filter. mmh3 is a Python library that implements the MurmurHash3 algorithm and can be used to produce a hash value that can set the index. 
+Implement a spam filter for emails (valid emails are stored in a list). These emails will be processed through the hash functions which will update the indexes in the bloom filter. mmh3 is a Python library that implements the MurmurHash3 algorithm and can be used to produce a hash value that can set the index. Using seed as an additional input will alter the hash output. 
 
 # Step Two: Create a GUI to test the Bloom Filter
 Implement a GUI where the user can input an email address to check if it might be in the list. The GUI will return True if it might exist or False if it definitly does not (Bloom Filter never has false negatives).
