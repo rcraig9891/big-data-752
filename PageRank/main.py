@@ -27,7 +27,8 @@ def main():
     map_input = establish_links(url_list)
     driver.close()
     print("Map_Reduce Version")
-    pr.map_reduce(map_input)
+    print(pr.map_reduce(map_input))
+
 
 
 def fetch_nodes():

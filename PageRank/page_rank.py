@@ -19,6 +19,7 @@ def map_reduce(hyper_links):
     page_ranks = np.ones(len(hyper_links))/len(hyper_links)
     node_scores = {key: rank for key, rank in zip(hyper_links, page_ranks)}
     new_scores = {}
+    # Compute multiple times to achieve convergence.
     for _ in range(100):
         for key, value in hyper_links.items():
             for link in value:
@@ -28,5 +29,5 @@ def map_reduce(hyper_links):
                     new_scores[link] = node_scores[key] / len(value)
         node_scores = new_scores.copy()
         new_scores.clear()
-        print(node_scores)
+    return node_scores
 
