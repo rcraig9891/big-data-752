@@ -27,12 +27,12 @@ Calculate the page ranks of a matrix representation using numPy library. Columns
 This time we will implement the pageRank algorithm on an actual graph database. The graph is displayed in the image neo4j_db.png file. We will apply Cypher queries to retireve the information needed then apply a sudo map_reduce function to determine the page ranks for the nodes in the graph.
 
 # Challenge Three: Implement the Bloom Filter
-A Bloom filter is a probabilistic data structure designed to efficiently test whether an element is a member of a set. It can quickly determine membership with a possibility of false positives but guarantees no false negatives. Uses a bit array and multiple hash functions to store information about the presence of elements. Query and insertion operations are in constant time making them an efficent filter.
+A Bloom filter is a probabilistic data structure designed to efficiently test whether an element is a member of a set. It can quickly determine membership with a possibility of false positives but guarantees no false negatives. Uses a bit array (efficent storage) and multiple hash functions to store information about the presence of elements. Query and insertion operations are in constant time making them an efficent filter.
 
-Avoid unnecessary disk lookup in databases. Bloom Filter is used to filter lookups that do not exist in the dataset. Bloom Filter can check if email exists in dataset to filter out malicious emails.
+Avoid unnecessary disk lookup in databases. Bloom Filter is used to filter lookups that do not exist in the dataset. Bloom Filter can check if email exists in dataset to filter out malicious emails. 
 
 # Step One: Create the Bloom Filter
-
+Implement a spam filter for emails (valid emails are stored in a list). These emails will be processed through the bloom filter to set the indexes of the bit array.
 
 
 
