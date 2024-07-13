@@ -13,11 +13,14 @@ class Bloom:
         for element in elements:
             for i in range(self.hash_count):
                 index = self.hash_function(element, i)
-                print(index)
                 self.bit_arr[index] = 1
 
     def lookup_element(self, element: str) -> bool:
-        pass
+        for i in range(self.hash_count):
+            index = self.hash_function(element, i)
+            if self.bit_arr[index] != 1:
+                return False
+        return True
 
     def hash_function(self, element: str, seed: int) -> int:
         hash_value = mmh3.hash(element, seed)

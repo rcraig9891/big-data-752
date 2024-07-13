@@ -34,7 +34,6 @@ valid_emails = [
 def main():
     bloom_filter = Bloom(1000, 3)
     bloom_filter.add_elements(valid_emails)
-    print(bloom_filter.bit_arr)
 
 
 if __name__ == "__main__":
